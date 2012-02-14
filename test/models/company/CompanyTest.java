@@ -14,6 +14,19 @@ import play.test.Fixtures;
 import play.test.UnitTest;
 
 public class CompanyTest extends UnitTest {
+	public static final String street = "street";
+	public static final String postCode = "N15 5QP";
+	public static final String country = "Poland";
+	public static final String name = "company";
+
+	public static Company prepareCompany() {
+		return prepareCompany(name);
+	}
+	
+	public static Company prepareCompany(String name) {
+		Address address = new Address(street, postCode, country);
+		return new Company(name, address);
+	}
 
 	@Before
 	public void clearDatabase() {
@@ -23,12 +36,7 @@ public class CompanyTest extends UnitTest {
 	@Test
 	public void after_save_with_address_everything_can_be_fetched() {
 		// given
-		String street = "street";
-		String postCode = "N15 5QP";
-		String country = "Poland";
-		Address address = new Address(street, postCode, country);
-		String name = "company";
-		Company company = new Company(name, address);
+		Company company = prepareCompany();
 		
 		// when
 		company.save();
@@ -49,12 +57,7 @@ public class CompanyTest extends UnitTest {
 	@Test
 	public void after_save_with_account_everything_can_be_fetched() {
 		// given
-		String street = "street";
-		String postCode = "N15 5QP";
-		String country = "Poland";
-		Address address = new Address(street, postCode, country);
-		String name = "company";
-		Company company = new Company(name, address);
+		Company company = prepareCompany();
 		
 		String number1 = "1111";
 		Account account1 = new Account(number1);
