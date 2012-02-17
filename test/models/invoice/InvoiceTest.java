@@ -12,6 +12,9 @@ import models.company.Company;
 import models.company.CompanyTest;
 import models.company.MyCompany;
 import models.company.MyCompanyTest;
+import models.rate.Currency;
+import models.rate.Rate;
+import models.rate.RateTable;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -51,6 +54,42 @@ public class InvoiceTest extends UnitTest {
 		assertThat(fetched.date, is(DATE));
 		assertThat(fetched.myCompany, is(myCompany));
 		assertThat(fetched.company, is(company));
+	}
+	
+	@Test
+	public void saved_invoice_with_exchange_rate_can_be_fetched() {
+		// given
+		MyCompany myCompany = MyCompanyTest.prepareMyCompany();
+		myCompany.save();
+		
+		Company company = CompanyTest.prepareCompany(CLIENT);
+		company.save();
+		
+		Date date = new GregorianCalendar(2012, 0, 1).getTime();
+		String tableName = "table 1/2012";
+		RateTable table = new RateTable(tableName, date);
+		table.save();
+
+		Currency fromCurrency1 = Currency.PLN;
+		Currency toCurrency1 = Currency.EUR;
+		BigDecimal exchangeRate1 = new BigDecimal(4.5);
+		Rate rate1 = new Rate(fromCurrency1, toCurrency1, exchangeRate1);
+		table.addRate(rate1);
+		
+		Invoice invoice = new Invoice(NUMBER, DATE, myCompany, company);
+		
+		// when
+		RateTable fetchedTable = RateTable.find("byName", tableName).first();
+		Rate fetchedRate = fetchedTable.rates.get(0);
+		
+		invoice.setRate(fetchedRate);
+		
+		Invoice fetched = Invoice.find("byNumber", NUMBER).first();
+		
+		// then
+		assertThat(fetched, notNullValue());
+		assertThat(fetched.rate.toCurrency, is(toCurrency1));
+		assertThat(fetched.rate.table.name, is(tableName));
 	}
 	
 	@Test

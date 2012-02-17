@@ -19,7 +19,7 @@ public class RateTable extends Model {
 	public Date date;
 	
 	@OneToMany(mappedBy = "table", cascade = CascadeType.ALL)
-	List<Rate> rates = new ArrayList<Rate>();
+	public List<Rate> rates = new ArrayList<Rate>();
 	
 	public RateTable(String name, Date date) {
 		this.name = name;

@@ -18,6 +18,7 @@ import play.test.Fixtures;
 import play.test.UnitTest;
 
 public class RateTableTest extends UnitTest {
+	public static final String TABLE_NAME = "table 1/2012";
 
 	@Before
 	public void clearDatabase() {
@@ -27,27 +28,25 @@ public class RateTableTest extends UnitTest {
 	@Test
 	public void saved_rate_table_can_be_fetched() {
 		// given
-		String name = "table 1/2012";
 		Date date = new GregorianCalendar(2012, 0, 1).getTime();
-		RateTable table = new RateTable(name, date);
+		RateTable table = new RateTable(TABLE_NAME, date);
 		
 		// when
 		table.save();
 		
-		RateTable fetched = RateTable.find("byName", name).first();
+		RateTable fetched = RateTable.find("byName", TABLE_NAME).first();
 		
 		// then
 		assertThat(fetched, notNullValue());
-		assertThat(fetched.name, is(name));
+		assertThat(fetched.name, is(TABLE_NAME));
 		assertThat(fetched.date, is(date));
 	}
 	
 	@Test
 	public void rates_saved_with_rate_table_can_be_fetched() {
 		// given
-		String name = "table 1/2012";
 		Date date = new GregorianCalendar(2012, 0, 1).getTime();
-		RateTable table = new RateTable(name, date);
+		RateTable table = new RateTable(TABLE_NAME, date);
 
 		Currency fromCurrency1 = Currency.PLN;
 		Currency toCurrency1 = Currency.EUR;
@@ -65,7 +64,7 @@ public class RateTableTest extends UnitTest {
 		table = table.addRate(rate1);
 		table = table.addRate(rate2);
 		
-		RateTable fetched = RateTable.find("byName", name).first();
+		RateTable fetched = RateTable.find("byName", TABLE_NAME).first();
 		
 		// then
 		List<Rate> fetchedRates = fetched.rates;

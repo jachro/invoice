@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 
 import models.company.Company;
 import models.company.MyCompany;
+import models.rate.Rate;
 import play.db.jpa.Model;
 
 @Entity
@@ -28,6 +29,9 @@ public class Invoice extends Model {
 	@OneToOne
 	@JoinColumn(name = "company_id")
 	public Company company;
+	@OneToOne
+	@JoinColumn(name = "rate_id")
+	public Rate rate;
 	@OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL)
 	public List<InvoiceItem> items = new ArrayList<InvoiceItem>();
 	
@@ -41,6 +45,11 @@ public class Invoice extends Model {
 	public Invoice addItem(InvoiceItem item) {
 		item.invoice = this;
 		this.items.add(item);
+		return this.save();
+	}
+	
+	public Invoice setRate(Rate rate) {
+		this.rate = rate;
 		return this.save();
 	}
 
