@@ -14,18 +14,19 @@ import play.test.Fixtures;
 import play.test.UnitTest;
 
 public class CompanyTest extends UnitTest {
-	public static final String street = "street";
-	public static final String postCode = "N15 5QP";
-	public static final String country = "Poland";
-	public static final String name = "company";
+	public static final String STREET = "street";
+	public static final String POST_CODE = "N15 5QP";
+	public static final String COUNTRY = "Poland";
+	public static final String NAME = "company";
+	public static final String NIP = "2233";
 
 	public static Company prepareCompany() {
-		return prepareCompany(name);
+		return prepareCompany(NAME);
 	}
 	
 	public static Company prepareCompany(String name) {
-		Address address = new Address(street, postCode, country);
-		return new Company(name, address);
+		Address address = new Address(STREET, POST_CODE, COUNTRY);
+		return new Company(name, NIP, address);
 	}
 
 	@Before
@@ -41,17 +42,18 @@ public class CompanyTest extends UnitTest {
 		// when
 		company.save();
 		
-		Company fetchedCompany = Company.find("byName", name).first();
+		Company fetchedCompany = Company.find("byName", NAME).first();
 		
 		// then
 		assertThat(fetchedCompany, notNullValue());
-		assertThat(company.name, is(name));
+		assertThat(company.name, is(NAME));
+		assertThat(company.nip, is(NIP));
 		
 		Address fetchedAddress = fetchedCompany.address;
 		assertThat(fetchedAddress, notNullValue());
-		assertThat(fetchedAddress.street, is(street));
-		assertThat(fetchedAddress.postCode, is(postCode));
-		assertThat(fetchedAddress.country, is(country));
+		assertThat(fetchedAddress.street, is(STREET));
+		assertThat(fetchedAddress.postCode, is(POST_CODE));
+		assertThat(fetchedAddress.country, is(COUNTRY));
 	}
 	
 	@Test
@@ -69,7 +71,7 @@ public class CompanyTest extends UnitTest {
 		company = company.addAccount(account1);
 		company = company.addAccount(account2);
 		
-		Company fetchedCompany = Company.find("byName", name).first();
+		Company fetchedCompany = Company.find("byName", NAME).first();
 		
 		// then
 		List<Account> fetchedAccounts = fetchedCompany.accounts;

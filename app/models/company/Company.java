@@ -9,14 +9,16 @@ import java.util.*;
 @Entity
 public class Company extends Model {
 	public String name;
+	public String nip;
 	
 	@OneToOne(mappedBy = "company", cascade = CascadeType.ALL)
 	public Address address;
 	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
 	public List<Account> accounts = new ArrayList<Account>();
 	
-	public Company(String name, Address address) {
+	public Company(String name, String nip, Address address) {
 		this.name = name;
+		this.nip = nip;
 		this.address = address;
 		this.address.company = this;
 	}
@@ -30,8 +32,9 @@ public class Company extends Model {
 	
 	@Override
 	public String toString() {
-		return "Company [" +
-				"name=" + name
+		return "Company ["
+				+ "name=" + name
+				+ "nip=" + nip
 				+ ", address=" + address
 				+ ", accounts=" + accounts
 				+ "]";

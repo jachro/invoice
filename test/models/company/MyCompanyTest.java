@@ -31,7 +31,7 @@ public class MyCompanyTest extends UnitTest {
 		MyCompany fetched = allFetched.get(0);
 
 		// then
-		assertThat(fetched.company.name, is(CompanyTest.name));
+		assertThat(fetched.company.name, is(CompanyTest.NAME));
 	}
 
 	public static MyCompany prepareMyCompany() {

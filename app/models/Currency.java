@@ -1,4 +1,4 @@
-package models.rate;
+package models;
 
 /**
  * Lists all currencies

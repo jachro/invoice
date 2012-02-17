@@ -8,6 +8,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import models.Currency;
+
 import play.db.jpa.Model;
 
 @Entity

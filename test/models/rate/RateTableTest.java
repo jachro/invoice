@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+import models.Currency;
 import models.company.Account;
 
 import org.junit.Before;

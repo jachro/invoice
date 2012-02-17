@@ -14,21 +14,41 @@ import play.db.jpa.Model;
 
 @Entity
 public class InvoiceItem extends Model {
-	public BigDecimal amount;
+	public Integer number;
+	public String serviceName;
+	public String symbol;
+	public Integer quantity;
+	public BigDecimal net;
+	public BigDecimal netTotal;
 	@Enumerated(EnumType.STRING)
 	public Tax tax;
+	public BigDecimal taxAmount;
+	public BigDecimal gross;
 	
 	@ManyToOne
 	@JoinColumn(name="invoice_id")
 	public Invoice invoice;
-	
-	public InvoiceItem(BigDecimal amount, Tax tax) {
-		this.amount = amount;
+
+	public InvoiceItem(Integer number, String serviceName, String symbol,
+			Integer quantity, BigDecimal net, BigDecimal netTotal, Tax tax,
+			BigDecimal taxAmount, BigDecimal gross) {
+		this.number = number;
+		this.serviceName = serviceName;
+		this.symbol = symbol;
+		this.quantity = quantity;
+		this.net = net;
+		this.netTotal = netTotal;
 		this.tax = tax;
+		this.taxAmount = taxAmount;
+		this.gross = gross;
 	}
 
 	@Override
 	public String toString() {
-		return "InvoiceItem [amount=" + amount + ", tax=" + tax + ", invoice=" + invoice.number + "]";
+		return "InvoiceItem [number=" + number + ", serviceName=" + serviceName
+				+ ", symbol=" + symbol + ", quantity=" + quantity + ", net="
+				+ net + ", netTotal=" + netTotal + ", tax=" + tax
+				+ ", taxAmount=" + taxAmount + ", gross=" + gross
+				+ ", invoice=" + invoice.number + "]";
 	}
 }
