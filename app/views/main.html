@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>#{get 'title' /}</title>
+        <title>&{'title'}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
@@ -16,6 +16,10 @@
 		        ${flash.error}
 		    </p>
 		#{/if}
+
+		<div>
+			<a href="@{company.MyCompanyController.myCompany()}">&{'menuMyCompany'}</a>
+		</div>
 
         #{doLayout /}
     </body>
