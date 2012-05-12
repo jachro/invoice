@@ -12,11 +12,13 @@ public class Address extends Model {
 	public String street;
 	public String postCode;
 	public String country;
-	
+
 	@OneToOne
 	@JoinColumn(name = "company_id")
 	public Company company;
 
+	public Address() {
+	}
 	public Address(String street, String postCode, String country) {
 		this.street = street;
 		this.postCode = postCode;
@@ -28,5 +30,5 @@ public class Address extends Model {
 		return "Address [street=" + street + ", postCode=" + postCode
 				+ ", country=" + country + "]";
 	}
-	
+
 }

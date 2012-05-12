@@ -14,6 +14,8 @@ public class Account extends Model {
 	@JoinColumn(name="company_id")
 	public Company company;
 
+	public Account() {
+	}
 	public Account(String number) {
 		this.number = number;
 	}

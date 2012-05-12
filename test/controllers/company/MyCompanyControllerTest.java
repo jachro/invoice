@@ -1,8 +1,12 @@
 package controllers.company;
 
+import static org.hamcrest.CoreMatchers.is;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import play.mvc.Http.Response;
+import play.test.Fixtures;
 import play.test.FunctionalTest;
 
 public class MyCompanyControllerTest extends FunctionalTest {
@@ -26,6 +30,6 @@ public class MyCompanyControllerTest extends FunctionalTest {
 		Response response = POST("/saveMyCompany");
 
 		// then
-		assertIsOk(response);
+		assertThat(response.status, is(302));
 	}
 }

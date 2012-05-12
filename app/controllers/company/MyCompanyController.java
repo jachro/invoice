@@ -14,13 +14,11 @@ public class MyCompanyController extends Controller {
 	}
 
 	public static void saveMyCompany() {
-
-		redirect("myCompany");
+		redirect("/myCompany");
 	}
 
 	private static MyCompany findMyCompany() {
 		List<MyCompany> myCompanies = MyCompany.findAll();
-		MyCompany myCompany = (!myCompanies.isEmpty()) ? myCompanies.get(0) : null;
-		return myCompany;
+		return (!myCompanies.isEmpty()) ? myCompanies.get(0) : new MyCompany();
 	}
 }

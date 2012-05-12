@@ -12,6 +12,9 @@ public class MyCompany extends Model {
 	@JoinColumn(name = "company_id")
 	public Company company;
 
+	public MyCompany() {
+		this.company = new Company();
+	}
 	public MyCompany(Company company) {
 		this.company = company;
 	}
