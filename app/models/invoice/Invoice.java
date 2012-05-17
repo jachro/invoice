@@ -37,7 +37,7 @@ public class Invoice extends Model {
 	@Temporal(TemporalType.DATE)
 	public Date dueDate;
 	public String transport;
-	
+
 	@OneToOne
 	@JoinColumn(name = "my_company_id")
 	public MyCompany myCompany;
@@ -52,9 +52,9 @@ public class Invoice extends Model {
 	public Account account;
 	@OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL)
 	public List<InvoiceItem> items = new ArrayList<InvoiceItem>();
-	
+
 	public Invoice(String number, PaymentType paymentType, Account account,
-			Currency currency, String order, Date invoiceDate, 
+			Currency currency, String order, Date invoiceDate,
 			Date sellingDate, Integer duePeriod, Date dueDate,
 			String transport, MyCompany myCompany, Company company) {
 		this.number = number;
@@ -76,7 +76,7 @@ public class Invoice extends Model {
 		this.items.add(item);
 		return this.save();
 	}
-	
+
 	public Invoice setRate(Rate rate) {
 		this.rate = rate;
 		return this.save();
@@ -84,7 +84,7 @@ public class Invoice extends Model {
 
 	@Override
 	public String toString() {
-		return "Invoice [number=" + number + ", invoiceDate=" + invoiceDate
+		return "Invoice [id=" + id + ", number=" + number + ", invoiceDate=" + invoiceDate
 				+ ", currency=" + currency + ", order=" + invoiceOrder
 				+ ", sellingDate=" + sellingDate + ", duePeriod=" + duePeriod
 				+ ", dueDate=" + dueDate + ", transport=" + transport

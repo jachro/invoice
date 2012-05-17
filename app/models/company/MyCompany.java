@@ -12,15 +12,12 @@ public class MyCompany extends Model {
 	@JoinColumn(name = "company_id")
 	public Company company;
 
-	public MyCompany() {
-		this.company = new Company();
-	}
 	public MyCompany(Company company) {
 		this.company = company;
 	}
 
 	@Override
 	public String toString() {
-		return "MyCompany [company=" + company + "]";
+		return "MyCompany [id=" + id + ", company=" + company + "]";
 	}
 }

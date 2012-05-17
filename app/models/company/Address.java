@@ -17,8 +17,6 @@ public class Address extends Model {
 	@JoinColumn(name = "company_id")
 	public Company company;
 
-	public Address() {
-	}
 	public Address(String street, String postCode, String country) {
 		this.street = street;
 		this.postCode = postCode;
@@ -27,7 +25,7 @@ public class Address extends Model {
 
 	@Override
 	public String toString() {
-		return "Address [street=" + street + ", postCode=" + postCode
+		return "Address [id=" + id + ", street=" + street + ", postCode=" + postCode
 				+ ", country=" + country + "]";
 	}
 

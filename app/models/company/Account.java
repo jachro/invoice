@@ -22,6 +22,6 @@ public class Account extends Model {
 
 	@Override
 	public String toString() {
-		return "Account [number=" + number + "]";
+		return "Account [id=" + id + ", number=" + number + "]";
 	}
 }

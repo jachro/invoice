@@ -17,15 +17,15 @@ public class RateTable extends Model {
 	public String name;
 	@Temporal(TemporalType.DATE)
 	public Date date;
-	
+
 	@OneToMany(mappedBy = "table", cascade = CascadeType.ALL)
 	public List<Rate> rates = new ArrayList<Rate>();
-	
+
 	public RateTable(String name, Date date) {
 		this.name = name;
 		this.date = date;
 	}
-	
+
 	public RateTable addRate(Rate rate) {
 		this.rates.add(rate);
 		rate.table = this;
@@ -35,8 +35,8 @@ public class RateTable extends Model {
 
 	@Override
 	public String toString() {
-		return "RateTable [" +
-				"name=" + name
+		return "RateTable [id=" + id
+				+ ", name=" + name
 				+ ", date=" + date
 				+ ", rates=" + rates
 				+ "]";

@@ -16,10 +16,6 @@ public class Company extends Model {
 	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
 	public List<Account> accounts = new ArrayList<Account>();
 
-	public Company() {
-		this.address = new Address();
-		this.address.company = this;
-	}
 	public Company(String name, String nip, Address address) {
 		this.name = name;
 		this.nip = nip;
@@ -36,8 +32,8 @@ public class Company extends Model {
 
 	@Override
 	public String toString() {
-		return "Company ["
-				+ "name=" + name
+		return "Company [id=" + id
+				+ ", name=" + name
 				+ ", nip=" + nip
 				+ ", address=" + address
 				+ ", accounts=" + accounts

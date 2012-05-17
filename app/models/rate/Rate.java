@@ -19,11 +19,11 @@ public class Rate extends Model {
 	@Enumerated(EnumType.STRING)
 	public Currency toCurrency;
 	public BigDecimal rate;
-	
+
 	@ManyToOne
 	@JoinColumn(name="rate_table_id")
 	public RateTable table;
-	
+
 	public Rate(Currency fromCurrency, Currency toCurrency, BigDecimal rate) {
 		this.fromCurrency = fromCurrency;
 		this.toCurrency = toCurrency;
@@ -32,7 +32,7 @@ public class Rate extends Model {
 
 	@Override
 	public String toString() {
-		return "Rate [fromCurrency=" + fromCurrency + ", toCurrency="
+		return "Rate [id=" + id + ", fromCurrency=" + fromCurrency + ", toCurrency="
 				+ toCurrency + ", rate=" + rate + "]";
 	}
 }

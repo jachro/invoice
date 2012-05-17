@@ -24,7 +24,7 @@ public class InvoiceItem extends Model {
 	public Tax tax;
 	public BigDecimal taxAmount;
 	public BigDecimal gross;
-	
+
 	@ManyToOne
 	@JoinColumn(name="invoice_id")
 	public Invoice invoice;
@@ -45,7 +45,7 @@ public class InvoiceItem extends Model {
 
 	@Override
 	public String toString() {
-		return "InvoiceItem [number=" + number + ", serviceName=" + serviceName
+		return "InvoiceItem [id=" + id + ", number=" + number + ", serviceName=" + serviceName
 				+ ", symbol=" + symbol + ", quantity=" + quantity + ", net="
 				+ net + ", netTotal=" + netTotal + ", tax=" + tax
 				+ ", taxAmount=" + taxAmount + ", gross=" + gross
