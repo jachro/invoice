@@ -3,4 +3,19 @@
 #
 title=Faktury
 
+# Menu
 menuMyCompany=Moja Firma
+
+# Common buttons
+save=Zapisz
+
+
+# Company
+companyName=Nazwa firmy
+companyNIP=NIP
+
+# Address
+address=Adres
+addressStreet=Ulica
+addressPostCode=Kod Pocztowy
+addressCountry=Kraj

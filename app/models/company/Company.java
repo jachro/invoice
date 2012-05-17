@@ -38,7 +38,7 @@ public class Company extends Model {
 	public String toString() {
 		return "Company ["
 				+ "name=" + name
-				+ "nip=" + nip
+				+ ", nip=" + nip
 				+ ", address=" + address
 				+ ", accounts=" + accounts
 				+ "]";

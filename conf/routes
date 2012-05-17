@@ -6,7 +6,7 @@
 GET     /                                       Index.index
 
 GET     /myCompany                              company.MyCompanyController.myCompany
-POST    /saveMyCompany                          company.MyCompanyController.saveMyCompany
+POST    /myCompany                          	company.MyCompanyController.saveMyCompany
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

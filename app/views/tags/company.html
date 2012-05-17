@@ -1,0 +1,29 @@
+#{if _company}
+	<input type="hidden" name="${_alias}company.id" value="${_company?.id}" />
+#{/if}
+<p>
+	<label for="${_alias}company.name">&{'companyName'}: </label>
+	<input type="text" name="${_alias}company.name" value="${_company?.name}" />
+</p>
+<p>
+	<label for="${_alias}company.nip">&{'companyNIP'}: </label>
+	<input type="text" name="${_alias}company.nip" value="${_company?.nip}" />
+</p>
+
+</br>
+<span><u><b>&{'address'}</b></u></span></br>
+#{if _company?.address}
+	<input type="hidden" name="${_alias}company.address.id" value="${_company?.address?.id}" />
+#{/if}
+<p>
+	<label for="${_alias}company.address.street">&{'addressStreet'}: </label>
+	<input type="text" name="${_alias}company.address.street" value="${_company?.address?.street}" />
+</p>
+<p>
+	<label for="${_alias}company.address.postCode">&{'addressPostCode'}: </label>
+	<input type="text" name="${_alias}company.address.postCode" value="${_company?.address?.postCode}" />
+</p>
+<p>
+	<label for="${_alias}company.address.country">&{'addressCountry'}: </label>
+	<input type="text" name="${_alias}company.address.country" value="${_company?.address?.country}" />
+</p>

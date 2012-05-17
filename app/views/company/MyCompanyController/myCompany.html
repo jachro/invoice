@@ -1,5 +1,11 @@
 #{extends 'main.html' /}
 
-<form action="@{company.MyCompanyController.saveMyCompany()}">
-	<input type="hidden" name="id" value="${myCompany.id}">
+<form action="@{company.MyCompanyController.saveMyCompany()}" method="post">
+	#{if myCompany}
+		<input type="hidden" name="myCompany.id" value="${myCompany?.id}" />
+	#{/if}
+	</br>
+	#{company company:myCompany?.company, alias:'myCompany.' /}
+	</br>
+	<input type="submit" value="&{'save'}" />
 </form>
