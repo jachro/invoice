@@ -36,7 +36,7 @@ public class InvoiceTest extends UnitTest {
 	private static final Date DUE_DATE = new GregorianCalendar(2012, 1, 1).getTime();
 	private static final String TRANSPORT = "smif88";
 
-	private final Account account = new Account(ACCOUNT_NUMBER);
+	private final Account account = new Account(ACCOUNT_NUMBER, CURRENCY);
 	private MyCompany myCompany;
 	private Company company;
 	private Invoice invoice;

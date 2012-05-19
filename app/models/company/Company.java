@@ -4,6 +4,9 @@ import play.*;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import org.apache.commons.lang.StringUtils;
+
 import java.util.*;
 
 @Entity
@@ -23,11 +26,40 @@ public class Company extends Model {
 		this.address.company = this;
 	}
 
+	/**
+	 * This method adds an account to {@code this} company
+	 * @param account	an account to add
+	 * @return			a reference to {@code this} company
+	 */
 	public Company addAccount(Account account) {
 		this.accounts.add(account);
 		account.company = this;
 		this.save();
 		return this;
+	}
+
+	/**
+	 * This method adds {@code this} company reference to all {@code accounts}
+	 */
+	public void joinAccountsWithCompany() {
+		if ((this.accounts == null) || (this.accounts.isEmpty())) {
+			return;
+		}
+
+		for (Account account : this.accounts) {
+			account.company = this;
+		}
+	}
+
+	/**
+	 * This method adds {@code this} company reference to all {@code accounts}
+	 */
+	public void joinAddressWithCompany() {
+		if (this.address == null) {
+			return;
+		}
+
+		this.address.company = this;
 	}
 
 	@Override

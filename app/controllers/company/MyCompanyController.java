@@ -16,7 +16,8 @@ public class MyCompanyController extends Controller {
 
 	public static void saveMyCompany(MyCompany myCompany) {
 		Company company = myCompany.company;
-		company.address.company = company;
+		company.joinAddressWithCompany();
+		company.joinAccountsWithCompany();
 		company.save();
 
 		myCompany.save();
