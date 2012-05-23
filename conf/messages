@@ -8,6 +8,7 @@ menuMyCompany=Moja Firma
 
 # Common buttons
 save=Zapisz
+actions=Akcje
 
 
 # Company
@@ -19,3 +20,8 @@ address=Adres
 addressStreet=Ulica
 addressPostCode=Kod Pocztowy
 addressCountry=Kraj
+
+# Account
+accounts=Konta
+accountNumber=Numer
+accountCurrency=Waluta

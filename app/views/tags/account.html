@@ -1,0 +1,24 @@
+*{Displays a row allowing entering a single account data.
+It takes three parameters:
+	_account	a reference to the Account object
+	_alias		if there's needed one on the very beginning of the field name
+	_index		an index of the account object
+}*
+
+<td>
+	#{if _account}
+		<input type="hidden" name="${_alias}company.account[${_index}].id" value="${_account?.id}" />
+	#{/if}
+	<input type="text" name="${_alias}company.account[${_index}].number" value="${_account?.number}" />
+</td>
+<td>
+	%{
+		selectName = _alias + "company.account[" + _index + "].currency";
+	}%
+
+	#{select selectName, value:_account?.currency}
+		#{list items:models.Currency.values(), as:'currency'}
+			#{option currency}${currency}#{/option}
+		#{/list}
+	#{/select}
+</td>

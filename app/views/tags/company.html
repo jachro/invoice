@@ -27,3 +27,28 @@
 	<label for="${_alias}company.address.country">&{'addressCountry'}: </label>
 	<input type="text" name="${_alias}company.address.country" value="${_company?.address?.country}" />
 </p>
+
+</br>
+<span><u><b>&{'accounts'}</b></u></span></br>
+<table>
+	<tr>
+		<th>&{'accountNumber'}</th>
+		<th>&{'accountCurrency'}</th>
+		<th>&{'actions'}</th>
+	</tr>
+	#{if _company?.accounts}
+		#{list items:_company.accounts, as:'account'}
+			<tr>
+				#{account account:account, alias:'myCompany.', index:account_index - 1 /}
+			</tr>
+		#{/list}
+	#{/if}
+	*{for a new account}*
+	%{
+		accountsNumber = (_company?.accounts) ? _company.accounts.size() : 0;
+	}%
+	<tr>
+		#{account account:null, alias:'myCompany.', index:accountsNumber /}
+	</tr>
+</table>
+
