@@ -2,15 +2,14 @@ package models;
 
 /**
  * Lists all currencies
- * 
+ *
  * @author kuba
  *
  */
 public enum Currency {
-	PLN,
 	EUR,
 	GBP,
+	PLN,
 	USD,
-	JPN,
 	;
 }
