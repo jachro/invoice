@@ -34,7 +34,6 @@ public class Company extends Model {
 	public Company addAccount(Account account) {
 		this.accounts.add(account);
 		account.company = this;
-		this.save();
 		return this;
 	}
 
@@ -42,7 +41,7 @@ public class Company extends Model {
 	 * This method adds {@code this} company reference to all {@code accounts}
 	 */
 	public void joinAccountsWithCompany() {
-		if ((this.accounts == null) || (this.accounts.isEmpty())) {
+		if (this.accounts.isEmpty()) {
 			return;
 		}
 

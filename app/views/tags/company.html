@@ -43,12 +43,32 @@
 			</tr>
 		#{/list}
 	#{/if}
-	*{for a new account}*
-	%{
-		accountsNumber = (_company?.accounts) ? _company.accounts.size() : 0;
-	}%
 	<tr>
-		#{account account:null, alias:'myCompany.', index:accountsNumber /}
+		<td>
+			<input type="text" name="newAccountNumber" />
+		</td>
+		<td>
+			#{select 'newAccountCurrency'}
+				#{list items:models.Currency.values(), as:'currency'}
+					#{option currency}${currency}#{/option}
+				#{/list}
+			#{/select}
+		</td>
+		<td>
+			<button id="add">&{'add'}</button>
+		</td>
 	</tr>
 </table>
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+	    $('#add').click(function() {
+	    	var parentForm = $(this).closest('form');
 
+	    	parentForm.attr('action', '${_addAccountAction}');
+
+	    	parentForm.submit();
+
+	    	return false;
+	    });
+	});
+</script>

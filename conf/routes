@@ -5,8 +5,9 @@
 # Home page
 GET     /                                       Index.index
 
-GET     /myCompany                              company.MyCompanyController.myCompany
+GET     /myCompany                              company.MyCompanyController.loadMyCompany
 POST    /myCompany                          	company.MyCompanyController.saveMyCompany
+POST    /myCompany/addAccount                   company.MyCompanyController.addAccount
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

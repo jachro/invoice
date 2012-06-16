@@ -6,14 +6,12 @@ It takes three parameters:
 }*
 
 <td>
-	#{if _account}
-		<input type="hidden" name="${_alias}company.account[${_index}].id" value="${_account?.id}" />
-	#{/if}
-	<input type="text" name="${_alias}company.account[${_index}].number" value="${_account?.number}" />
+	<input type="hidden" name="${_alias}company.accounts[${_index}].id" value="${_account?.id}" />
+	<input type="text" name="${_alias}company.accounts[${_index}].number" value="${_account?.number}" />
 </td>
 <td>
 	%{
-		selectName = _alias + "company.account[" + _index + "].currency";
+		selectName = _alias + "company.accounts[" + _index + "].currency";
 	}%
 
 	#{select selectName, value:_account?.currency}
